@@ -1,4 +1,4 @@
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageFilter
 import tkinter
 import sys
 
@@ -19,8 +19,10 @@ def convert(img:Image, size):
     new_img = img.copy()
     new_img:Image.Image = new_img.resize(size)
 
+    new_img = new_img.point(lambda p: 255 if p > 200 else 0)
+    new_img = new_img.filter(ImageFilter.EDGE_ENHANCE)
+
     # Remove pixels that are not close to pure white
-    new_img = new_img.point(lambda p: 255 if p > 170 else 0)
     return ImageTk.PhotoImage(new_img)
 
 def update_image(event):
