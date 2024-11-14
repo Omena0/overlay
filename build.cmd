@@ -4,5 +4,4 @@ py -m nuitka --standalone --onefile --windows-console-mode=disable --enable-plug
  --output-dir="__build"^
  --deployment --python-flag="-OO" --python-flag="-S"^
  --output-filename="imageOverlay.exe"^
- --nofollow-import-to=nuitka^
  main.py
